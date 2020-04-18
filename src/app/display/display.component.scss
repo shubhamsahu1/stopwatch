@@ -1,0 +1,42 @@
+.display-wraper {
+  margin: 10px;
+  border: 1px solid black;
+  height: 250px;
+  display: flex;
+  &__time {
+    padding: 10px;
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 18px;
+  }
+  &__statred {
+    flex-grow: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &--text {
+      font-size: 20px;
+    }
+    &--value {
+      font-size: 30px;
+    }
+  }
+  &__paused {
+    flex-grow: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &--text {
+      font-size: 20px;
+    }
+    &--value {
+      font-size: 30px;
+    }
+  }
+}
