@@ -1,0 +1,27 @@
+.control_wraper {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  &_form {
+    margin: 20px;
+    &--input {
+      input {
+        margin: 5px;
+        padding: 2px;
+        border-radius: 4px;
+      }
+    }
+    &--buttons {
+      margin: 20px 0 0 105px;
+      button {
+        padding: 10px;
+        margin: 5px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+  &_log {
+    margin: 20px;
+  }
+}

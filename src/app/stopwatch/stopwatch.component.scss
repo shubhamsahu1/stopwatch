@@ -1,0 +1,22 @@
+.stopwatch{
+    display: flex;
+    width: 100%;
+    border: 1px solid black;
+    flex-direction: column;
+    &_wraper{
+        display: flex;
+        height: 400px;
+        &_timer{
+            margin: 10px;
+            border: 1px solid black;
+            width: 50%;
+           
+        } 
+        &_control{
+            margin: 10px;
+            border: 1px solid black;
+            width: 50%;
+        }
+    }
+    
+}
