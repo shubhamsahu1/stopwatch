@@ -9,6 +9,7 @@ export class ControlComponent implements OnInit, OnDestroy {
 
   constructor() { }
   @Output() timerEvent = new EventEmitter<string>();
+  limit;
   intervalId = 0;
   messages: string[] = [];
   seconds = 0;
@@ -26,6 +27,10 @@ export class ControlComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() { this.clearTimer(); }
   start() {
+    if(this.seconds <= 0){
+      alert("please enter timer value")
+      return
+    }
     if (this.startFlag) {
       this.clearTimer();
       this.messages.push(`paused at ${this.seconds}`);
@@ -43,12 +48,14 @@ export class ControlComponent implements OnInit, OnDestroy {
     this.seconds = 0
     this.messages = []
     this.timerEvent.emit("reset")
+    this.limit = ""
+    
   }
   private countDown() {
     this.clearTimer();
     this.intervalId = window.setInterval(() => {
       this.seconds -= 1;
-      if (this.seconds === 0) {
+      if (this.seconds <= 0) {
         this.reset()
       } 
     }, 1000);

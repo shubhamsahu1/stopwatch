@@ -2,7 +2,7 @@
   <div class="control_wraper_form">
     <div class="control_wraper_form--input">
       <label for="limit">Enter time limit:</label>
-      <input type="number" #limit (change)="setTime(limit.value)"  name="limit" />
+      <input type="number"  [value]="limit"  (change)="limit = $event.target.value; setTime(limit)" name="limit" />
     </div>
     <div class="control_wraper_form--buttons">
       <button (click)="start()">Start/Pause</button>
