@@ -1,7 +1,7 @@
 <div class="stopwatch">
   <div class="stopwatch_wraper">
     <timer [seconds]="control.seconds" class="stopwatch_wraper_timer"></timer>
-    <control #control class="stopwatch_wraper_control"></control>
+    <control #control (timerEvent)="display.timerEvent($event)" class="stopwatch_wraper_control"></control>
   </div>
-  <display class="stopwatch_wraper_display"></display>
+  <display #display class="stopwatch_wraper_display"></display>
 </div>

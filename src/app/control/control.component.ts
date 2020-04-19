@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'control',
@@ -8,7 +8,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 export class ControlComponent implements OnInit, OnDestroy {
 
   constructor() { }
-
+  @Output() timerEvent = new EventEmitter<string>();
   intervalId = 0;
   messages: string[] = [];
   seconds = 0;
@@ -29,10 +29,10 @@ export class ControlComponent implements OnInit, OnDestroy {
     if (this.startFlag) {
       this.clearTimer();
       this.messages.push(`paused at ${this.seconds}`);
-      ++this.stopCount
+      this.timerEvent.emit("stop")
     } else {
       this.countDown();
-      ++this.startCount
+      this.timerEvent.emit("start")
     }
     this.startFlag = !this.startFlag
 
@@ -42,17 +42,15 @@ export class ControlComponent implements OnInit, OnDestroy {
     this.intervalId = 0;
     this.seconds = 0
     this.messages = []
-    this.stopCount = 0
-    this.startCount = 0
+    this.timerEvent.emit("reset")
   }
   private countDown() {
     this.clearTimer();
     this.intervalId = window.setInterval(() => {
       this.seconds -= 1;
       if (this.seconds === 0) {
-      } else {
-        if (this.seconds < 0) { this.clearTimer(); }
-      }
+        this.reset()
+      } 
     }, 1000);
   }
 

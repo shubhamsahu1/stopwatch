@@ -11,5 +11,9 @@ export class StopwatchComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  public clickedEvent: Event;
+  childEventClicked(event: Event) {
+   // this.clickedEvent = event;
+   console.log(event)
+  }
 }
