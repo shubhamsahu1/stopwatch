@@ -6,10 +6,13 @@
     </div>
     <div class="control_wraper_form--buttons">
       <button (click)="start()">Start/Pause</button>
-      <button (click)="stop()">Reset</button>
+      <button (click)="reset()">Reset</button>
     </div>
   </div>
   <div class="control_wraper_log">
-    paused at: {{seconds}}
+    <p *ngFor="let message of messages" >
+      {{message}}
+    </p>
   </div>
+  
 </div>

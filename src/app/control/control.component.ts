@@ -10,9 +10,9 @@ export class ControlComponent implements OnInit, OnDestroy {
   constructor() { }
 
   intervalId = 0;
-  message = '';
-  seconds = 11;
-
+  messages: string[] = [];
+  seconds = 0;
+  startFlag: boolean = false
   startCount: number = 0
   stopCount: number = 0
 
@@ -25,20 +25,33 @@ export class ControlComponent implements OnInit, OnDestroy {
   ngOnInit() { }
 
   ngOnDestroy() { this.clearTimer(); }
-  start() { this.countDown(); }
-  stop() {
+  start() {
+    if (this.startFlag) {
+      this.clearTimer();
+      this.messages.push(`paused at ${this.seconds}`);
+      ++this.stopCount
+    } else {
+      this.countDown();
+      ++this.startCount
+    }
+    this.startFlag = !this.startFlag
+
+  }
+  reset() {
     this.clearTimer();
-    this.message = `Holding at T-${this.seconds} seconds`;
+    this.intervalId = 0;
+    this.seconds = 0
+    this.messages = []
+    this.stopCount = 0
+    this.startCount = 0
   }
   private countDown() {
     this.clearTimer();
     this.intervalId = window.setInterval(() => {
       this.seconds -= 1;
       if (this.seconds === 0) {
-        this.message = 'Blast off!';
       } else {
-        if (this.seconds < 0) { this.seconds = 10; } // reset
-        this.message = `T-${this.seconds} seconds and counting`;
+        if (this.seconds < 0) { this.clearTimer(); }
       }
     }, 1000);
   }
