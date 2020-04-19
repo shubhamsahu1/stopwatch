@@ -2,14 +2,14 @@
   <div class="control_wraper_form">
     <div class="control_wraper_form--input">
       <label for="limit">Enter time limit:</label>
-      <input type="number" id="limit" name="limit" />
+      <input type="number" #limit (change)="setTime(limit.value)"  name="limit" />
     </div>
     <div class="control_wraper_form--buttons">
-      <button>Start/Pause</button>
-      <button>Reset</button>
+      <button (click)="start()">Start/Pause</button>
+      <button (click)="stop()">Reset</button>
     </div>
   </div>
   <div class="control_wraper_log">
-    paused at:
+    paused at: {{seconds}}
   </div>
 </div>
