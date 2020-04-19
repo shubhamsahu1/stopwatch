@@ -49,6 +49,7 @@ export class ControlComponent implements OnInit, OnDestroy {
     this.messages = []
     this.timerEvent.emit("reset")
     this.limit = ""
+    this.startFlag = false
     
   }
   private countDown() {

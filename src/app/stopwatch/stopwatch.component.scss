@@ -5,7 +5,7 @@
     flex-direction: column;
     &_wraper{
         display: flex;
-        height: 400px;
+        min-height: 400px;
         &_timer{
             margin: 10px;
             border: 1px solid black;
